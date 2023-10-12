@@ -56,8 +56,10 @@ export function App() {
 					{favoriteJokes.length === 0 ? (
 						<>
 							Click the <Icon name="heart" size={0.75} />
-							<VisuallyHidden element="span">heart icon</VisuallyHidden> to add
-							jokes to favorites!
+							<VisuallyHidden element="span">
+								add to favorites button
+							</VisuallyHidden>{' '}
+							to add jokes to favorites!
 						</>
 					) : (
 						<ul role="list">
