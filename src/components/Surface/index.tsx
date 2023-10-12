@@ -1,6 +1,14 @@
-import { ComponentChildren } from 'preact';
+import { FunctionComponent, JSX } from 'preact';
+import { PropsWithChildren } from 'preact/compat';
 import style from './style.module.css';
 
-export function Surface(props: { children: ComponentChildren }) {
-	return <div class={style.surface}>{props.children}</div>;
-}
+export const Surface: FunctionComponent<
+	PropsWithChildren<JSX.IntrinsicElements['div']>
+> = ({ children, ...props }) => {
+	console.log(props.accept);
+	return (
+		<div {...props} class={`${style.surface} ${props.class ?? ''}`}>
+			{children}
+		</div>
+	);
+};

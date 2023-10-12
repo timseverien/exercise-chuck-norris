@@ -1,0 +1,12 @@
+.header {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+
+	padding: var(--space-s);
+}
+
+.content {
+	padding-inline: var(--space-s);
+	padding-block-end: var(--space-s);
+}

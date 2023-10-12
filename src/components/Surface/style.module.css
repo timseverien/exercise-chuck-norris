@@ -1,3 +1,4 @@
 .surface {
-	padding: 1rem;
+	background-color: #fff;
+	border-radius: var(--space-3xs);
 }
