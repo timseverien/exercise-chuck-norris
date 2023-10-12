@@ -1,47 +1,13 @@
-import { FunctionComponent } from 'preact';
 import { createClient as createJokeClient } from './clients/chuckNorrisJoke';
-import { Joke } from './clients/joke';
 import { IconButton } from './components/Button';
 import { Icon } from './components/Icon';
-import { Surface } from './components/Surface';
 import { useFavoriteJokes, useJokes } from './services/joke';
 import './styles/base.css';
 import './styles/reset.css';
 import './styles/tokens.css';
 import { OverviewLayout } from './components/Layout';
 import { Card } from './components/Card';
-
-const JokeCard: FunctionComponent<{
-	joke: Joke;
-	favoriteJokes: Joke[];
-	addFavoriteJoke: (joke: Joke) => void;
-	removeFavoriteJoke: (joke: Joke) => void;
-}> = (props) => {
-	const isFavorite = props.favoriteJokes.some((j) => j.id === props.joke.id);
-	const isFavoritesFull = props.favoriteJokes.length === 10;
-
-	return (
-		<Surface>
-			{isFavorite ? (
-				<IconButton
-					icon={<Icon name="heartOff" />}
-					onClick={() => props.removeFavoriteJoke(props.joke)}
-				>
-					Remove from favorites
-				</IconButton>
-			) : (
-				<IconButton
-					icon={<Icon name="heart" />}
-					onClick={() => props.addFavoriteJoke(props.joke)}
-					disabled={isFavoritesFull}
-				>
-					Add to favorites
-				</IconButton>
-			)}
-			<span>{props.joke.text}</span>
-		</Surface>
-	);
-};
+import { JokeCard } from './components/JokeCard';
 
 export function App() {
 	const [jokes, isLoading, getRandomJokes] = useJokes(createJokeClient());
