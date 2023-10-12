@@ -2,5 +2,5 @@
 	display: flex;
 	align-items: flex-start;
 	flex-direction: row;
-	gap: var(--space-s);
+	gap: var(--space-2xs);
 }
