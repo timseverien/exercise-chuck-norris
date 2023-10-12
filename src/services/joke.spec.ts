@@ -1,13 +1,11 @@
+import { describe, expect, test, vi } from 'vitest';
 import { Joke, JokeClient } from '../clients/joke';
 import { getRandomJoke } from './joke';
-import { describe, test, expect, vi } from 'vitest';
 
 function createJoke(overrides: Partial<Joke> = {}): Joke {
 	return {
-		icon_url: '',
 		id: '',
-		url: '',
-		value: '',
+		text: '',
 		...overrides,
 	};
 }
