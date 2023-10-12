@@ -4,8 +4,9 @@ import { VisuallyHidden } from '../VisuallyHidden';
 import style from './style.module.css';
 
 export const IconButton: FunctionComponent<
-	Omit<JSX.IntrinsicElements['button'], 'icon'> &
-		PropsWithChildren & { icon: ComponentChild }
+	PropsWithChildren<
+		Omit<JSX.IntrinsicElements['button'], 'icon'> & { icon: ComponentChild }
+	>
 > = ({ icon, children, ...props }) => (
 	<button {...props} class={style.iconButton}>
 		{icon}
