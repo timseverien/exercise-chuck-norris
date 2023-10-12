@@ -36,8 +36,8 @@ export function App() {
 							<>Loading</>
 						) : (
 							<ul role="list">
-								{jokes.map((joke, index) => (
-									<li key={index}>
+								{jokes.map((joke) => (
+									<li key={joke.id}>
 										<JokeCard
 											joke={joke}
 											favoriteJokes={favoriteJokes}
