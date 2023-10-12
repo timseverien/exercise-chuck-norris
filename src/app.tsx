@@ -15,55 +15,57 @@ export function App() {
 		useFavoriteJokes();
 
 	return (
-		<OverviewLayout>
-			<Card
-				header={
-					<>
-						<h2>Random jokes</h2>
-						<IconButton
-							onClick={() => getRandomJokes()}
-							disabled={isLoading}
-							icon={<Icon name="refreshCcw" />}
-						>
-							Get new jokes
-						</IconButton>
-					</>
-				}
-			>
-				<div aria-live="polite">
-					{isLoading ? (
-						<>Loading</>
-					) : (
-						<ul role="list">
-							{jokes.map((joke, index) => (
-								<li key={index}>
-									<JokeCard
-										joke={joke}
-										favoriteJokes={favoriteJokes}
-										addFavoriteJoke={addFavoriteJoke}
-										removeFavoriteJoke={removeFavoriteJoke}
-									/>
-								</li>
-							))}
-						</ul>
-					)}
-				</div>
-			</Card>
+		<main>
+			<OverviewLayout>
+				<Card
+					header={
+						<>
+							<h2>Random jokes</h2>
+							<IconButton
+								onClick={() => getRandomJokes()}
+								disabled={isLoading}
+								icon={<Icon name="refreshCcw" />}
+							>
+								Get new jokes
+							</IconButton>
+						</>
+					}
+				>
+					<div aria-live="polite">
+						{isLoading ? (
+							<>Loading</>
+						) : (
+							<ul role="list">
+								{jokes.map((joke, index) => (
+									<li key={index}>
+										<JokeCard
+											joke={joke}
+											favoriteJokes={favoriteJokes}
+											addFavoriteJoke={addFavoriteJoke}
+											removeFavoriteJoke={removeFavoriteJoke}
+										/>
+									</li>
+								))}
+							</ul>
+						)}
+					</div>
+				</Card>
 
-			<Card header={<h2>Favorites</h2>}>
-				<ul role="list">
-					{favoriteJokes.map((joke) => (
-						<li key={joke.id}>
-							<JokeCard
-								joke={joke}
-								favoriteJokes={favoriteJokes}
-								addFavoriteJoke={addFavoriteJoke}
-								removeFavoriteJoke={removeFavoriteJoke}
-							/>
-						</li>
-					))}
-				</ul>
-			</Card>
-		</OverviewLayout>
+				<Card header={<h2>Favorites</h2>}>
+					<ul role="list">
+						{favoriteJokes.map((joke) => (
+							<li key={joke.id}>
+								<JokeCard
+									joke={joke}
+									favoriteJokes={favoriteJokes}
+									addFavoriteJoke={addFavoriteJoke}
+									removeFavoriteJoke={removeFavoriteJoke}
+								/>
+							</li>
+						))}
+					</ul>
+				</Card>
+			</OverviewLayout>
+		</main>
 	);
 }
