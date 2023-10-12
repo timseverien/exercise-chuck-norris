@@ -9,6 +9,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "lucide-preact": "^0.286.0",
     "preact": "^10.16.0",
     "zod": "^3.22.4"
   },
