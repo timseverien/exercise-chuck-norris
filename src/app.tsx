@@ -1,10 +1,11 @@
 import { FunctionComponent } from 'preact';
 import { createClient as createJokeClient } from './clients/chuckNorrisJoke';
 import { Joke } from './clients/joke';
+import { IconButton } from './components/Button';
+import { Icon } from './components/Icon';
 import { Surface } from './components/Surface';
 import { useFavoriteJokes, useJokes } from './services/joke';
-import { Heart, HeartOff, RefreshCw } from 'lucide-preact';
-import { IconButton } from './components/Button';
+import './styles/base.css';
 import './styles/reset.css';
 
 const JokeCard: FunctionComponent<{
@@ -20,14 +21,14 @@ const JokeCard: FunctionComponent<{
 		<Surface>
 			{isFavorite ? (
 				<IconButton
-					icon={<HeartOff />}
+					icon={<Icon name="heartOff" />}
 					onClick={() => props.removeFavoriteJoke(props.joke)}
 				>
 					Remove from favorites
 				</IconButton>
 			) : (
 				<IconButton
-					icon={<Heart />}
+					icon={<Icon name="heart" />}
 					onClick={() => props.addFavoriteJoke(props.joke)}
 					disabled={isFavoritesFull}
 				>
@@ -50,7 +51,7 @@ export function App() {
 			<IconButton
 				onClick={() => getRandomJokes()}
 				disabled={isLoading}
-				icon={<RefreshCw />}
+				icon={<Icon name="refreshCcw" />}
 			>
 				Get new jokes
 			</IconButton>
@@ -59,8 +60,8 @@ export function App() {
 					<>Loading</>
 				) : (
 					<ul role="list">
-						{jokes.map((joke) => (
-							<li key={joke.id}>
+						{jokes.map((joke, index) => (
+							<li key={index}>
 								<JokeCard
 									joke={joke}
 									favoriteJokes={favoriteJokes}
