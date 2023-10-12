@@ -12,7 +12,6 @@ export function useLocalStorage<T>(
 	const [state, setState] = useState<T>(value);
 
 	useEffect(() => {
-		console.log(serialize(state));
 		window.localStorage.setItem(key, serialize(state));
 	}, [state]);
 
