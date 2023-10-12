@@ -1,13 +1,14 @@
 import { createClient as createJokeClient } from './clients/chuckNorrisJoke';
 import { IconButton } from './components/Button';
+import { Card } from './components/Card';
 import { Icon } from './components/Icon';
+import { JokeCard } from './components/JokeCard';
+import { OverviewLayout } from './components/Layout';
+import { VisuallyHidden } from './components/VisuallyHidden';
 import { useFavoriteJokes, useJokes } from './services/joke';
 import './styles/base.css';
 import './styles/reset.css';
 import './styles/tokens.css';
-import { OverviewLayout } from './components/Layout';
-import { Card } from './components/Card';
-import { JokeCard } from './components/JokeCard';
 
 export function App() {
 	const [jokes, isLoading, getRandomJokes] = useJokes(createJokeClient());
@@ -52,18 +53,26 @@ export function App() {
 				</Card>
 
 				<Card header={<h2>Favorites</h2>}>
-					<ul role="list">
-						{favoriteJokes.map((joke) => (
-							<li key={joke.id}>
-								<JokeCard
-									joke={joke}
-									favoriteJokes={favoriteJokes}
-									addFavoriteJoke={addFavoriteJoke}
-									removeFavoriteJoke={removeFavoriteJoke}
-								/>
-							</li>
-						))}
-					</ul>
+					{favoriteJokes.length === 0 ? (
+						<>
+							Click the <Icon name="heart" size={0.75} />
+							<VisuallyHidden element="span">heart icon</VisuallyHidden> to add
+							jokes to favorites!
+						</>
+					) : (
+						<ul role="list">
+							{favoriteJokes.map((joke) => (
+								<li key={joke.id}>
+									<JokeCard
+										joke={joke}
+										favoriteJokes={favoriteJokes}
+										addFavoriteJoke={addFavoriteJoke}
+										removeFavoriteJoke={removeFavoriteJoke}
+									/>
+								</li>
+							))}
+						</ul>
+					)}
 				</Card>
 			</OverviewLayout>
 		</main>
