@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { Joke, JokeClient, JokeListSchema } from '../clients/joke';
 import { useLocalStorage } from './localeStorage';
 
